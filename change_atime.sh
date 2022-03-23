@@ -1,4 +1,5 @@
 #!/bin/bash
+# change the access time without using "touch"
   
 dir=/global/cscratch1/sd/sglanvil/archive/e3smv1.20TR_CMIP6.ne30_oECv3_ICG.LE-v1.0365.004/
 
