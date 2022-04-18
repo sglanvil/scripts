@@ -1,9 +1,11 @@
 #!/bin/bash
 
-# Make this a cronjob, type "crontab -e"
+# STEP ONE: ssh dtn02
+# STEP TWO: add this cronjob to list, type "crontab -e", add this line (with no #)
 # 00 06 * * * bash -l /global/homes/s/sglanvil/rsync_e3smv1.sh 1> rsync_e3smv1.out 2>&1
+
+# https://docs.nersc.gov/systems/dtn/#access
 # https://docs.nersc.gov/jobs/workflow/workflow_nodes/
-# maybe use ssh coriwork
 
 # --------------- USER SPECIFY ---------------
 case=e3smv1.20TR_CMIP6.ne30_oECv3_ICG.LE-v1.0365.004
