@@ -21,6 +21,7 @@ for fullSrc in $src/*; do
                 echo $hashDest
                 if [[ "$hashSrc" == "$hashDest" ]]; then
                         echo "okay to remove source file"
+                        ls $src/$file
                         # rm $src/$file # -------------- WHEN READY, UNCOMMENT THIS LINE
                 else
                         echo "do NOT remove source file"
