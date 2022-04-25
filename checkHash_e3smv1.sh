@@ -24,8 +24,10 @@ for fullSrc in $src/*; do
                         ls $src/$file
                         # rm $src/$file # -------------- WHEN READY, UNCOMMENT THIS LINE
                 else
-                        echo "do NOT remove source file"
+                        echo "do NOT remove source file (dest file is corrupt)"
                 fi
+        else
+                "do NOT remove source file (dest file does not exist)"
         fi
         echo --------------------------
 done
