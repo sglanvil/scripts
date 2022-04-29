@@ -27,7 +27,7 @@ for fullSrc in $src/*; do
                         echo "do NOT remove source file (dest file is corrupt)"
                 fi
         else
-                "do NOT remove source file (dest file does not exist)"
+                echo "do NOT remove source file (dest file does not exist)"
         fi
         echo --------------------------
 done
