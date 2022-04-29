@@ -41,3 +41,4 @@ for fullSrc in $(find $src -name '*' -type f); do
         fi
         echo --------------------------
 done
+
