@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # This script creates a file listing of all files ready to be deleted.
-# These files exist as duplicates, present on source and destination directories.
+# These files exist as duplicates, present on both $src and $dest directories.
+# This uses MD5 hashes, checking size and corruption.
 
 # ------------------------- SETUP --------------------------
 # ssh dtn02
@@ -17,7 +18,7 @@ dest=/global/cfs/cdirs/mp9/archive/e3smv1/$case/
 
 for fullSrc in $(find $src -name '*' -type f); do
         file=$(sed -e 's/.*\///' <<< $fullSrc)
-        middlePath=$(sed -e "s~$src~~" <<< $fullSrc | sed -e "s/$file//")
+        middlePath=$(sed -e "s~$src~~" <<< $fullSrc | sed -e "s/$file//") # Using tildas because $src variable has forward slashes
         echo $fullSrc
         hashSrc=$(md5sum $src/$middlePath/$file | cut -d " " -f1) # get hash of src file
         if [ -f "$dest"/"$middlePath"/"$file" ]; then # make sure dest file exists
