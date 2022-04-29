@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# This script creates a file listing of all files ready to be deleted.
+# These files exist as duplicates, present on source and destination directories.
+
+# ------------------------- SETUP --------------------------
+# ssh dtn02
+# nohup bash checkHash_nanr.sh > checkHash_out 2>&1 &
+# (will continue/finish, even after lost connection)
+# ----------------------------------------------------------
+
 # ------------------- USER SPECIFY BELOW -------------------
 case=e3smv1.20TR_CMIP6.ne30_oECv3_ICG.LE-v1.0210.001
 src=/global/cscratch1/sd/nanr/archive/$case/
