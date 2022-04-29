@@ -2,12 +2,14 @@
 
 # This script creates a file listing of all files ready to be deleted.
 # These files exist as duplicates, present on both $src and $dest directories.
-# This uses MD5 hashes, checking size and corruption.
+# This script uses MD5 hashes, checking size and corruption.
 
 # ------------------------- SETUP --------------------------
 # ssh dtn02
 # nohup bash checkHash_nanr.sh > checkHash_out 2>&1 &
 # (will continue/finish, even after lost connection)
+# This script creates 1-2 text files: removeList_nanr and keepList_nanr
+# Then you can run this commmand: cat removeList_nanr | xargs rm
 # ----------------------------------------------------------
 
 # ------------------- USER SPECIFY BELOW -------------------
