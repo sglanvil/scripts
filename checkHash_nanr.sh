@@ -10,6 +10,7 @@
 # (will continue/finish, even after lost connection)
 # This script creates 1-2 text files: removeList_nanr and keepList_nanr
 # Then you can run this commmand: cat removeList_nanr | xargs rm
+# Then you can rerun this checkHash_nanr.sh script to see if anything remains.
 # ----------------------------------------------------------
 
 # ------------------- USER SPECIFY BELOW -------------------
