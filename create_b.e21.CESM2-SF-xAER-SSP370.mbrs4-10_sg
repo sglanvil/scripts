@@ -65,7 +65,7 @@ foreach mbr ( `seq $start_mbr $end_mbr` )
         ln -s $REFROOT/$REFDATE-01-01-00000/b.e21*    $RUNROOT/$CASENAME/run/
 
         ./case.setup --reset
-        qcmd -- ./case.build
+        qcmd -A P93300313 -- ./case.build
 end
 
 exit
