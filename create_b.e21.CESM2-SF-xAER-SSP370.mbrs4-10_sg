@@ -1,0 +1,71 @@
+#!/bin/csh -fx
+# originally made by nanr
+# significantly edited by sglanvil
+
+setenv CESM2_SF_TOOLS_ROOT /glade/work/cesmsf/cesm_tags/CASE_tools/cesm2-sf/
+setenv CESMROOT /glade/work/nanr/cesm_tags/cesm2.1.4-rc.07
+setenv POSTPROCESS_PATH /glade/u/home/mickelso/CESM_postprocessing_3/
+setenv POSTPROCESS_PATH_GEYSER /glade/u/home/mickelso/CESM_postprocessing_3/
+
+set COMPSET = BSSP370cmip6
+set MACHINE = cheyenne
+set RESOLN = f09_g17
+set RESUBMIT = 11
+set STOP_N=3
+set STOP_OPTION=nyears
+set PROJECT=P93300313
+
+setenv SCENARIO xAER
+setenv REFDATE  2015-01-01
+setenv BASENAME b.e21.${COMPSET}.${RESOLN}.CESM2-SF-${SCENARIO}
+setenv BASEROOT /glade/work/cesmsf/CESM2-SF/
+setenv RUNROOT  /glade/scratch/cesmsf/
+
+set start_mbr =  4
+set end_mbr =  10
+foreach mbr ( `seq $start_mbr $end_mbr` )
+        set mbr_padZeros = `printf %03d $mbr`
+        setenv REFDATE  2015
+        setenv CASENAME b.e21.${COMPSET}.${RESOLN}.CESM2-SF-${SCENARIO}.${mbr_padZeros}
+        setenv CASEROOT  $BASEROOT$CASENAME
+        setenv REFCASE  b.e21.BHISTcmip6.f09_g17.CESM2-SF-xAER.${mbr_padZeros}
+        setenv REFROOT  /glade/scratch/cesmsf/archive/${REFCASE}/rest
+
+        cd $CESMROOT/cime/scripts/
+        ./create_newcase --case $CASEROOT --res $RESOLN  --compset $COMPSET --project $PROJECT
+
+        cd $CASEROOT
+
+        ./xmlchange RUN_REFCASE=$REFCASE
+        ./xmlchange RUN_REFDATE=$REFDATE-01-01
+        ./xmlchange RUN_STARTDATE=$REFDATE-01-01
+        ./xmlchange GET_REFCASE=FALSE
+        ./xmlchange PROJECT=P93300313
+        ./xmlchange NTASKS_ICE=36
+        ./xmlchange NTASKS_LND=504
+        ./xmlchange ROOTPE_ICE=504
+
+        mv user_nl_cam user_nl_cam.`date +%m%d-%H%M`
+        mv user_nl_clm user_nl_clm.`date +%m%d-%H%M`
+        mv user_nl_cpl user_nl_cpl.`date +%m%d-%H%M`
+        mv user_nl_cice user_nl_cice.`date +%m%d-%H%M`
+        mv SourceMods SourceMods.`date +%m%d-%H%M`
+
+        cp -r $CESM2_SF_TOOLS_ROOT/SourceMods $CASEROOT/
+        cp $CESM2_SF_TOOLS_ROOT/user_nl_files/hist-xaer/user* $CASEROOT/
+
+        ./case.setup
+
+        ./xmlchange STOP_N=$STOP_N
+        ./xmlchange STOP_OPTION=$STOP_OPTION
+        ./xmlchange RESUBMIT=$RESUBMIT
+        ./xmlchange JOB_QUEUE=economy --subgroup case.run
+
+        cp    $REFROOT/$REFDATE-01-01-00000/rpointer* $RUNROOT/$CASENAME/run/
+        ln -s $REFROOT/$REFDATE-01-01-00000/b.e21*    $RUNROOT/$CASENAME/run/
+
+        ./case.setup --reset
+        qcmd -- ./case.build
+end
+
+exit
