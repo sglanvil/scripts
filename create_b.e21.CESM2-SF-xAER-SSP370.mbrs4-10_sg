@@ -1,6 +1,6 @@
 #!/bin/csh -fx
 # originally made by nanr
-# significantly edited by sglanvil
+# significant edits by sglanvil
 
 setenv CESM2_SF_TOOLS_ROOT /glade/work/cesmsf/cesm_tags/CASE_tools/cesm2-sf/
 setenv CESMROOT /glade/work/nanr/cesm_tags/cesm2.1.4-rc.07
