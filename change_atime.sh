@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Author: Sasha Glanville (sglanvil@ucar.edu)
 
 # change the access time without using "touch" (loophole, I guess)
