@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Author: Sasha Glanville (sglanvil@ucar.edu)
+
 # run as "cesmsf"
 whoami
 
