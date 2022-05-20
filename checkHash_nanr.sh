@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Author: Sasha Glanville (sglanvil@ucar.edu)
+
 # This script creates a file listing of all files ready to be deleted.
 # These files exist as duplicates, present on both $src and $dest directories.
 # This script checks all archive files (all components, even non-hist subdirectories).
