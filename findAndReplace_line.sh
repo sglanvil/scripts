@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Author: Sasha Glanville (sglanvil@ucar.edu)
+
 case=b.e21.BHISTcmip6.f09_g17.CESM2-SF-xAER
 
 for imember in {004..010}; do
