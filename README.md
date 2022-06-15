@@ -13,6 +13,8 @@ https://stackoverflow.com/questions/27787536/how-to-pass-a-variable-containing-s
 ```
 ### Find and exec
 ```
-Just search Jan-01 files, because of the repeats:
+For the S2S realtime stand-alone land run:
+(just search Jan-01 files, because of the repeats)
 find *-01-01-00000 -name "*clm2.h0.*" -type f -exec cp {} /glade/campaign/cesm/development/cross-wg/S2S/sanjiv/climo/ \;
+find *-01-01-00000 -name "*.clm2.h0.*" -type f -exec cp {} /glade/campaign/cesm/development/cross-wg/S2S/sanjiv/regular/ \;
 ```
