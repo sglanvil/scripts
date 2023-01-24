@@ -20,10 +20,12 @@ find *-01-01-00000 -name "*.clm2.h0.*" -type f -exec cp {} /glade/campaign/cesm/
 ```
 ```
 Find and rename (sub)directories recursively 
+(/glade/campaign/cesm/development/cross-wg/S2S/CESM2/)
 find . -depth -name "*climoALL*" -type d -exec rename "climoALL" "climoATMclimoLND" {} \;
 ```
 ```
 Find and rename files recursively
+(/glade/campaign/cesm/development/cross-wg/S2S/CESM2/)
 find . -name "*climoALL*" -type f -exec rename "climoALL" "climoATMclimoLND" {} \;
 ```
 ## Execcasper Notes
