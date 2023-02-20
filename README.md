@@ -32,3 +32,10 @@ find . -name "*climoALL*" -type f -exec rename "climoALL" "climoATMclimoLND" {} 
 ```
 execcasper -l walltime=24:00:00 --mem=100G
 ```
+### NCO Notes
+```
+Remove degenerate (size=1) dimension with NCO (like matlab’s squeeze)
+Example: assume time is the degenerate variable…
+ncks -C -O -x -v time in.nc out.nc
+ncwa -O -a time in.nc out.nc
+```
