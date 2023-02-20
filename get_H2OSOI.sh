@@ -23,6 +23,10 @@ done
 ncecat -O ${dest}/*_time0* ${dest}/H2OSOI_cesm2cam6${case}v2.00.clm2.h0.ALL.time0.nc
 ncecat -O ${dest}/*_time5* ${dest}/H2OSOI_cesm2cam6${case}v2.00.clm2.h0.ALL.time5.nc
 
-# squeeze the degenerate time dimension
+# remove (squeeze) the degenerate time dimension
+ncks -C -O -x -v time ${dest}/H2OSOI_cesm2cam6${case}v2.00.clm2.h0.ALL.time0.nc ${dest}/H2OSOI_cesm2cam6${case}v2.00.clm2.h0.ALL.time0.nc
+ncks -C -O -x -v time ${dest}/H2OSOI_cesm2cam6${case}v2.00.clm2.h0.ALL.time5.nc ${dest}/H2OSOI_cesm2cam6${case}v2.00.clm2.h0.ALL.time5.nc
+
 ncwa -O -a time ${dest}/H2OSOI_cesm2cam6${case}v2.00.clm2.h0.ALL.time0.nc ${dest}/H2OSOI_cesm2cam6${case}v2.00.clm2.h0.ALL.time0.nc
 ncwa -O -a time ${dest}/H2OSOI_cesm2cam6${case}v2.00.clm2.h0.ALL.time5.nc ${dest}/H2OSOI_cesm2cam6${case}v2.00.clm2.h0.ALL.time5.nc
+
