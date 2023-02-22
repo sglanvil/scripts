@@ -1,8 +1,7 @@
 #!/bin/bash
-# changing the global attributes (input_file description)
+# Use: changes the global attributes ("input_file" description)
 # Note: you can also run this over good files and it won't mess them up
-# (it fixes the wrong ones, and just leaves the correct files alone)
-# located: /glade/work/sglanvil/CCR/movingStuff/change_global_attributes
+# (it fixes the wrong files, and just leaves the correct files alone)
 
 module load nco
 
@@ -21,3 +20,4 @@ for imember in 0111 0121 0131 0141; do
                 echo
         done
 done
+
